@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahaj Nirmala Jivan</title>
+  <meta name="description" content="A divine and minimalist gallery blending travel and portrait photography with spiritual devotion and sacred light.">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Sahaj Nirmala Jivan</h1>
+    <p>Photography as devotion — reflections of divine stillness and grace.</p>
+  </header>
+
+  <main>
+    <section id="gallery">
+      <h2>Divine Gallery</h2>
+      <div id="photo-gallery"></div>
+    </section>
+
+    <section id="about">
+      <h2>About My Path</h2>
+      <p>Each photograph emerges from silence — a prayer through light, form, and presence.</p>
+    </section>
+  </main>
+
+  <script>
+    // Fetch gallery photos dynamically from Netlify CMS
+    fetch('gallery.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('photo-gallery');
+        data.photos.forEach(photo => {
+          const img = document.createElement('img');
+          img.src = photo.url;
+          img.alt = photo.title;
+          container.appendChild(img);
+        });
+      });
+  </script>
+</body>
+</html>
